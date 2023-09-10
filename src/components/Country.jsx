@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-const Country = ({ country }) => {
-    console.log(country)
+const Country = ({ country, visitedCountryHandleClick }) => {
+    // console.log(country.name.common)
 
-    const { name, flags, population, region, startOfWeek, status, subregion, timezones, capital} = country
+    const { name, flags, population, region, startOfWeek, status, subregion, timezones, capital } = country
     const { common, official } = name
 
     const [visited, setVesited] = useState(false);
@@ -26,6 +26,7 @@ const Country = ({ country }) => {
             <p>Time Zones: {timezones[0]} </p>
             <button className="my-4  px-2 py-1 bg-[#FF3FA4] text-[#fff] rounded-sm" onClick={visitedBtnHandleClick}> {visited ? 'Visited' : 'Going'} </button> <br />
             {visited ? 'i visited this country' : 'i want to visit'} <br />
+            <button className="my-4  px-2 py-1 bg-[#FF3FA4] text-[#fff] rounded-sm" onClick={() => visitedCountryHandleClick(country)}>Mark as visited</button>
         </div>
     );
 };
